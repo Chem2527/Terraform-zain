@@ -116,7 +116,15 @@
 -	Optional: Intro to Terratest
   - Exercise: Add security scanning to a project via pre-commit and Checkov
 
-### Module 15: CI/CD with GitHub Actions
+### Module 15: Terragrunt
+ - What is Terragrunt?, Installation & Setup, Basic Terragrunt Workflow, Terragrunt Configuration Basics, 
+ - Managing Multiple Environments with Terragrunt
+ - Remote State Management with Terragrunt
+ -  Reusable Modules with Terragrunt
+ -  Managing Dependencies Between Modules
+ -  
+
+### Module 16: CI/CD with GitHub Actions
 -	Plan and apply via GitHub Actions
 -	Store credentials securely
 -	Setup plan-only workflow on PR
