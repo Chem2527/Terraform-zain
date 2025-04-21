@@ -27,7 +27,7 @@
   - Exercise: Provision multiple EC2 instances using for_each and map variables
 
 ## Phase 2: State Management & Project Structuring (Intermediate Level)
- Goal: Understand how Terraform tracks infra and organize AWS projects cleanly
+
 
  ### Module 4: State Management
 -	What is the .tfstate file?
