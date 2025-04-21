@@ -1,7 +1,7 @@
 # Terraform-Training
 
 ## Phase 1
-###  Module 1: Introduction & Setup
+ ###  Module 1: Introduction & Setup
 -	What is Infrastructure as Code (IaC)?
 -	Why Terraform?
 -	Install Terraform (Windows/macOS/Linux)
@@ -10,7 +10,7 @@
 -	Provider block: AWS
    - Exercise: Provision a basic AWS S3 bucket
 
- ### Module 2: Core Terraform Concepts
+  ### Module 2: Core Terraform Concepts
 -	Resources (e.g., aws_instance, aws_s3_bucket)
 -	Variables (var)
 -	Output values
@@ -19,7 +19,7 @@
 -	Formatting: terraform fmt
   - Exercise: Create a variable based EC2 instance with a dynamic AMI lookup
 
-### Module 3: Language Features
+ ### Module 3: Language Features
 -	Built-in types: string, list, map, object
 -	Expressions & conditionals
 -	Meta-arguments: count, for_each, depends_on
