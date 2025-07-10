@@ -17,7 +17,19 @@
 ## About
 - Terraform was owned by Hashicorp
 - Along with Terraform Hashicorp has below other tools
-- Packer - for image automation
--  
+- Packer: for image automation
+-  vault: Password management
+
+## Practical hands-on
+
+- main.tf: Through this file we are telling terraform to which cloud we are deploying through provider block.
+
+```bash
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+}
+```
+- The lines that are present inside {} are known as arguments.
   
 
