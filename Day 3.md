@@ -3,7 +3,7 @@
 
 - File structure
 
-  ```bash
+```bash
 terraform-demo/
 ├── without-data-source-locals/
 │   ├── main.tf
