@@ -1,10 +1,9 @@
 # This demo shows the difference between a basic Terraform configuration and one that uses data sources and local values
 
-## Without data sources and locals
 
-## With data sources and locals
+- File structure
 
-```bash
+  ```bash
 terraform-demo/
 ├── without-data-source-locals/
 │   ├── main.tf
