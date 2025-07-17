@@ -1,55 +1,24 @@
-Without data sources and locals
+# This demo shows the difference between a basic Terraform configuration and one that uses **data sources** and **local values**. It uses AWS EC2 as an example
 
-With data sources and locals
+## Without data sources and locals
 
-📁 Final File Structure
-python
-Copy
-Edit
+## With data sources and locals
+
+### Final File Structure
+
 terraform-demo/
-├── 1-without-data-source-locals/
+├── without-data-source-locals/
 │   ├── main.tf
 │   ├── variables.tf
 │   ├── outputs.tf
 │
-├── 2-with-data-source-locals/
+├── with-data-source-locals/
 │   ├── main.tf
 │   ├── variables.tf
 │   ├── locals.tf
 │   ├── outputs.tf
 │
 └── README.md
-📄 README.md (place at the root: terraform-demo/README.md)
-md
-Copy
-Edit
-# Terraform Demo: Data Sources & Local Values
-
-This demo shows the difference between a basic Terraform configuration and one that uses **data sources** and **local values**. It uses AWS EC2 as an example.
-
----
-
-## 📁 Folder Structure
-
-terraform-demo/
-├── 1-without-data-source-locals/
-│ ├── main.tf
-│ ├── variables.tf
-│ ├── outputs.tf
-│
-├── 2-with-data-source-locals/
-│ ├── main.tf
-│ ├── variables.tf
-│ ├── locals.tf
-│ ├── outputs.tf
-│
-└── README.md
-
-yaml
-Copy
-Edit
-
----
 
 ## ✅ 1. Without Data Source and Locals
 
