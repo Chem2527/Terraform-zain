@@ -95,7 +95,7 @@ data "aws_ami" "amazon_linux" {
 
 resource "aws_instance" "example" {
   ami           = data.aws_ami.amazon_linux.id
-  instance_type = var.instance_type
+  instance_type = local.common_tags.instance_type
   tags          = local.common_tags
 }
 ```
@@ -122,6 +122,7 @@ locals {
     Name        = "With-DataSource-Local"
     Environment = "Dev"
     Owner       = "BeginnerDemo"
+    instance_type = "t2.micro"
   }
 }
 ```
@@ -136,5 +137,10 @@ output "instance_id" {
 output "ami_used" {
   description = "The AMI ID used for the instance"
   value       = data.aws_ami.amazon_linux.id
+}
+output "tags" {
+  description = "Tags applied to the EC2 instance"
+  value       = local.common_tags.instance_type
+  
 }
 ```
