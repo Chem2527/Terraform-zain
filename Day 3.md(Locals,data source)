@@ -20,12 +20,13 @@ terraform-demo/
 │
 └── README.md
 
-## ✅ 1. Without Data Source and Locals
+##  1. Without Data Source and Locals
 
 This version is simple but requires you to manually enter the AMI ID and repeat tag values.
 
-### 🔧 `main.tf`
-```hcl
+- main.tf
+
+```bash
 provider "aws" {
   region = var.aws_region
 }
@@ -37,10 +38,10 @@ resource "aws_instance" "example" {
     Name = "Without-DataSource-Local"
   }
 }
-🔧 variables.tf
-hcl
-Copy
-Edit
+```
+- variables.tf
+
+```bash
 variable "aws_region" {
   description = "AWS region to deploy the instance"
   type        = string
@@ -57,25 +58,24 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
-🔧 outputs.tf
-hcl
-Copy
-Edit
+```
+-  outputs.tf
+```bash
 output "instance_id" {
   description = "ID of the created EC2 instance"
   value       = aws_instance.example.id
 }
-✅ 2. With Data Source and Local Values
-This version is more dynamic and reusable:
+```
+###  2. With Data Source and Local Values
 
-Uses a data source to fetch the latest Amazon Linux 2 AMI.
 
-Uses local values to define common tags.
+- Uses a data source to fetch the latest Amazon Linux 2 AMI.
 
-🔧 main.tf
-hcl
-Copy
-Edit
+- Uses local values to define common tags.
+
+- main.tf
+
+```bash
 provider "aws" {
   region = var.aws_region
 }
@@ -95,10 +95,10 @@ resource "aws_instance" "example" {
   instance_type = var.instance_type
   tags          = local.common_tags
 }
-🔧 variables.tf
-hcl
-Copy
-Edit
+```
+- variables.tf
+
+```bash
 variable "aws_region" {
   description = "AWS region to deploy the instance"
   type        = string
@@ -110,10 +110,9 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
-🔧 locals.tf
-hcl
-Copy
-Edit
+```
+- locals.tf
+```bash
 locals {
   common_tags = {
     Name        = "With-DataSource-Local"
@@ -121,10 +120,11 @@ locals {
     Owner       = "BeginnerDemo"
   }
 }
-🔧 outputs.tf
-hcl
-Copy
-Edit
+```
+
+- outputs.tf
+
+```bash
 output "instance_id" {
   description = "ID of the created EC2 instance"
   value       = aws_instance.example.id
@@ -134,30 +134,4 @@ output "ami_used" {
   description = "The AMI ID used for the instance"
   value       = data.aws_ami.amazon_linux.id
 }
-🧪 How to Use
-Go into one of the directories:
-
-bash
-Copy
-Edit
-cd 1-without-data-source-locals
-# or
-cd 2-with-data-source-locals
-Initialize Terraform:
-
-bash
-Copy
-Edit
-terraform init
-(For version 1 only) Create a terraform.tfvars file with your AMI ID:
-
-hcl
-Copy
-Edit
-ami_id = "ami-0c02fb55956c7d316" # example for us-east-1
-Apply the configuration:
-
-bash
-Copy
-Edit
-terraform apply
+```
