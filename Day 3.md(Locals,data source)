@@ -1,10 +1,8 @@
 # This demo shows the difference between a basic Terraform configuration and one that uses **data sources** and **local values**. It uses AWS EC2 as an example
 
-- Without data sources and locals
+## Without data sources and locals
 
-- With data sources and locals
-
--  File Structure
+## With data sources and locals
 
 ```bash
 terraform-demo/
