@@ -1,11 +1,12 @@
 # This demo shows the difference between a basic Terraform configuration and one that uses **data sources** and **local values**. It uses AWS EC2 as an example
 
-## Without data sources and locals
+- Without data sources and locals
 
-## With data sources and locals
+- With data sources and locals
 
-### Final File Structure
+-  File Structure
 
+```bash
 terraform-demo/
 ├── without-data-source-locals/
 │   ├── main.tf
@@ -19,6 +20,7 @@ terraform-demo/
 │   ├── outputs.tf
 │
 └── README.md
+```
 
 ##  1. Without Data Source and Locals
 
@@ -59,13 +61,16 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 ```
+
 -  outputs.tf
+
 ```bash
 output "instance_id" {
   description = "ID of the created EC2 instance"
   value       = aws_instance.example.id
 }
 ```
+
 ###  2. With Data Source and Local Values
 
 
@@ -112,6 +117,7 @@ variable "instance_type" {
 }
 ```
 - locals.tf
+
 ```bash
 locals {
   common_tags = {
@@ -121,7 +127,6 @@ locals {
   }
 }
 ```
-
 - outputs.tf
 
 ```bash
