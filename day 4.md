@@ -71,7 +71,7 @@ output "web2_instance_id" {
 
 ## Set 2: WITH for_each (Dynamic Approach)
 
-- Use a map variable and for_each loop to dynamically create instances.
+- Loop over this map and for each key-value pair, create a separate EC2 instance with the specified configuration
 
 Folder Structure
 
