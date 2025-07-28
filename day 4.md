@@ -15,7 +15,6 @@ This guide demonstrates two approaches for launching multiple EC2 instances usin
 ```bash
 static/
 ├── main.tf
-├── variables.tf
 └── outputs.tf
 ```
 
