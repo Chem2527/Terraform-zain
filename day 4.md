@@ -8,25 +8,21 @@ This guide demonstrates two approaches for launching multiple EC2 instances usin
 
 
 ## Set 1: WITHOUT `for_each` (Manual Approach)
-
-### What You Show
-
-Define each EC2 instance separately using individual `aws_instance` resource blocks.
+- Define each EC2 instance separately using individual `aws_instance` resource blocks.
 
 ### Folder Structure
 
-set1-static/
+```bash
+static/
 ├── main.tf
 ├── variables.tf
 └── outputs.tf
+```
 
-pgsql
-Copy
-Edit
 
-### `main.tf`
+- main.tf
 
-```hcl
+```bash
 provider "aws" {
   region = "us-east-1"
 }
@@ -46,17 +42,17 @@ resource "aws_instance" "web2" {
     Name = "web2"
   }
 }
-variables.tf (Optional)
-hcl
-Copy
-Edit
+```
+- variables.tf
+
+```bash
 variable "region" {
   default = "us-east-1"
 }
-outputs.tf
-hcl
-Copy
-Edit
+```
+- outputs.tf
+
+```bash
 output "web1_instance_id" {
   value = aws_instance.web1.id
 }
@@ -64,29 +60,31 @@ output "web1_instance_id" {
 output "web2_instance_id" {
   value = aws_instance.web2.id
 }
-Disadvantages
-Repetition: Code is duplicated for each instance.
 
-Scalability issue: Hard to manage when you need 5, 10, or more instances.
+```
+- **Disadvantages**
+- Repetition: Code is duplicated for each instance.
 
-Maintenance burden: Updating configurations for multiple instances is time-consuming.
+- Scalability issue: Hard to manage when you need 5, 10, or more instances.
 
-Set 2: WITH for_each (Dynamic Approach)
-What You Show
-Use a map variable and for_each loop to dynamically create instances.
+- Maintenance burden: Updating configurations for multiple instances is time-consuming.
+
+## Set 2: WITH for_each (Dynamic Approach)
+
+- Use a map variable and for_each loop to dynamically create instances.
 
 Folder Structure
-csharp
-Copy
-Edit
-set2-foreach/
+
+```bash
+
+foreach/
 ├── main.tf
 ├── variables.tf
 └── outputs.tf
-main.tf
-hcl
-Copy
-Edit
+```
+- main.tf
+
+```bash
 provider "aws" {
   region = "us-east-1"
 }
@@ -100,10 +98,9 @@ resource "aws_instance" "ec2" {
     Name = each.key
   }
 }
-variables.tf
-hcl
-Copy
-Edit
+```
+- variables.tf
+```bash
 variable "ec2_config" {
   description = "Map of EC2 instance configurations"
   type = map(object({
@@ -121,27 +118,21 @@ variable "ec2_config" {
     }
   }
 }
-outputs.tf
-h
-Copy
-Edit
+```
+- outputs.tf
+
+```bash
 output "instance_ids" {
   description = "IDs of the created EC2 instances"
   value = {
     for name, inst in aws_instance.ec2 : name => inst.id
   }
 }
-Advantages
-Scalable: Easily add or remove instances by modifying the map.
+```
+**Advantages**
 
-Clean & DRY: No code duplication; centralized configuration.
+- Scalable: Easily add or remove instances by modifying the map.
 
-Dynamic properties: Configure instance types, AMIs, and tags per instance with ease.
+- Clean & DRY: No code duplication; centralized configuration.
 
-How to Run
-bash
-Copy
-Edit
-terraform init
-terraform plan
-terraform apply
+- Dynamic properties: Configure instance types, AMIs, and tags per instance with ease.
