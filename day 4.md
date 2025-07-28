@@ -25,41 +25,32 @@ static/
 ```bash
 provider "aws" {
   region = "us-east-1"
+  
 }
 
 resource "aws_instance" "web1" {
-  ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.micro"
-  tags = {
-    Name = "web1"
-  }
+  ami = "ami-020cba7c55df1f615"
+  instance_type = "t3.micro"
+
 }
 
 resource "aws_instance" "web2" {
-  ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.small"
-  tags = {
-    Name = "web2"
-  }
-}
-```
-- variables.tf
+  ami = "ami-020cba7c55df1f615"
+  instance_type = "t3.micro"
 
-```bash
-variable "region" {
-  default = "us-east-1"
 }
 ```
 - outputs.tf
 
 ```bash
-output "web1_instance_id" {
-  value = aws_instance.web1.id
+output "web1" {
+  value = aws_instance.web1.public_ip
 }
 
-output "web2_instance_id" {
-  value = aws_instance.web2.id
+output "web2" {
+  value = aws_instance.web2.public_ip
 }
+
 
 ```
 - **Disadvantages**
@@ -87,13 +78,14 @@ foreach/
 ```bash
 provider "aws" {
   region = "us-east-1"
+  
 }
 
 resource "aws_instance" "ec2" {
-  for_each      = var.ec2_config
+  for_each = var.saikrishna
+
   ami           = each.value.ami_id
   instance_type = each.value.instance_type
-
   tags = {
     Name = each.key
   }
@@ -101,33 +93,37 @@ resource "aws_instance" "ec2" {
 ```
 - variables.tf
 ```bash
-variable "ec2_config" {
-  description = "Map of EC2 instance configurations"
+variable "saikrishna" {
+
+  description = "variable name dummy"
   type = map(object({
     instance_type = string
-    ami_id        = string
+    ami_id = string
   }))
   default = {
-    "web1" = {
-      instance_type = "t2.micro"
-      ami_id        = "ami-0c55b159cbfafe1f0"
-    },
-    "web2" = {
-      instance_type = "t2.small"
-      ami_id        = "ami-0c55b159cbfafe1f0"
+    web1 = {
+      instance_type = "t3.micro"
+      ami_id = "ami-020cba7c55df1f615"
+    }
+    web2 = {
+      instance_type = "t3.micro"
+      ami_id = "ami-020cba7c55df1f615"
     }
   }
 }
+
+
 ```
 - outputs.tf
 
 ```bash
-output "instance_ids" {
-  description = "IDs of the created EC2 instances"
+output "name" {
   value = {
-    for name, inst in aws_instance.ec2 : name => inst.id
+    for instance in aws_instance.ec2 : instance.id => instance.tags.Name
   }
+  
 }
+
 ```
 **Advantages**
 
