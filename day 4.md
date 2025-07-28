@@ -2,7 +2,7 @@
 
 This guide demonstrates two approaches for launching multiple EC2 instances using Terraform:
 
-- **Set 1**: Manual/static resource blocks
+- **Set 1**: Manual resource blocks
 - **Set 2**: Dynamic configuration using `for_each`
 
 ---
