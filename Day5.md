@@ -34,3 +34,13 @@ resource "aws_instance" "example" {
   }
 }
 ```
+
+- Destroy the infra which we created using terraform destroy now our remote state file in s3 is empty.
+
+- remove .terraform/  & .hcl locally, 
+
+```bash
+rm -rf .terraform/
+rm .terraform.lock.hcl
+```
+- run **terraform plan** and   understand whether it will add or delete resources (in our case ec2)?
