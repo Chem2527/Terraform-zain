@@ -60,3 +60,5 @@ terraform refresh
 terraform plan
 ```
 - observe the changes
+- If you want to keep the incoming change u can manually update the main.tf. i.e(from t3 to t2)
+- if u want to keep the existing instance type u can do **terraform apply**
