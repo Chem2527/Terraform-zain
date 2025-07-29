@@ -44,3 +44,19 @@ rm -rf .terraform/
 rm .terraform.lock.hcl
 ```
 - run **terraform plan** and   understand whether it will add or delete resources (in our case ec2)?
+
+
+- **Manual drift outside Terraform** :  ex: someone manually changes the EC2 instance type from t3.micro to t3.small using the AWS Console or CLI.
+
+- stop instance and change from t3 to  t2.micro
+
+
+- Detect drift by refreshing the state
+
+```bash
+terraform refresh
+```
+```bash
+terraform plan
+```
+- observe the changes
