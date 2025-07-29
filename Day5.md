@@ -40,8 +40,7 @@ resource "aws_instance" "example" {
 - remove .terraform/  & .hcl locally, 
 
 ```bash
-rm -rf .terraform/
-rm .terraform.lock.hcl
+rm -rf .terraform/ .terraform.lock.hcl 
 ```
 - run **terraform plan** and   understand whether it will add or delete resources (in our case ec2)?
 
