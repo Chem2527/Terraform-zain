@@ -1,4 +1,4 @@
-# State Locking using S3 and storing state file remotely in s3
+# State Locking using S3 and storing state file remotely in s3, Manual drift
 
 - What is .tfstate?
 
