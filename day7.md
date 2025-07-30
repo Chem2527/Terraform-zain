@@ -1,5 +1,5 @@
 # Usage of Aws vault and why we need to use?
-- In traditional way we will be storing aws creds under .aws/credentials/  in plain text.. which is not good.
+- In traditional way we will be storing aws creds under .aws/credentials/  in plain text.. anyone who hacks our system can read values..
 - **Windows Credential Manager** is a built-in secure storage system on Windows that encrypts and protects sensitive credentials like passwords, certificates, and other secrets.
 - Aws vault will also use this feature which is secure.
 - Install aws-vault
