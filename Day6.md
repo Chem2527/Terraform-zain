@@ -1,5 +1,5 @@
 # Understanding Terraform Import and its importance 
-- 1. Prepare your Terraform configuration
+- Prepare your Terraform configuration
 - main.tf
 ```bash
 resource "aws_instance" "example" {
