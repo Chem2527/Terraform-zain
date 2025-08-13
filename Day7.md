@@ -37,7 +37,7 @@ resource "aws_instance" "saikrishna" {
   instance_type = var.instance_type
 
   tags = {
-    Name        = "saikrishna-${terraform.workspace}"
+    Name        = "Instance-${terraform.workspace}"
     environment = terraform.workspace
   }
 }
