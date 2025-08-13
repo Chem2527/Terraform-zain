@@ -7,7 +7,7 @@
 |-- outputs.tf
 |-- prod.tfvars
 |-- test.tfvars
-`-- variables.tf
+|-- variables.tf
 ```
 ```bash
 aws configure --profile dev-profile
