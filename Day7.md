@@ -2,12 +2,12 @@
 # Terraform AWS EC2 Deployment (Multi-Environment)
 
 ```bash
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── dev.tfvars
-├── test.tfvars
-├── README.md
+|-- dev.tfvars
+|-- main.tf
+|-- outputs.tf
+|-- prod.tfvars
+|-- test.tfvars
+`-- variables.tf
 ```
 ```bash
 aws configure --profile dev-profile
