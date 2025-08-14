@@ -62,6 +62,7 @@ output "sg_name" {
 ```
 # With Dynamic Blocks
 - This version uses a variable list of ingress rules and a dynamic block inside the resource. It allows easy scaling and reuse of the security group with different ingress rules.
+- **content block** defines what fields and values to include inside each generated block
 
 ```bash
 resource "aws_security_group" "sg" {
