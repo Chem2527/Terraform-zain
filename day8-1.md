@@ -12,7 +12,7 @@ In this version, ingress rules are explicitly declared inside the resource. This
 
 ### main.tf
 
-```hcl
+```bash
 resource "aws_security_group" "sg" {
   name        = "dev-SG"
   description = "Example security group"
@@ -44,29 +44,26 @@ resource "aws_security_group" "sg" {
     Environment = "development"
   }
 }
-variables.tf
-hcl
-Copy
-Edit
+```
+
+- variables.tf
+```bash
 variable "vpcid" {
   description = "The ID of the VPC where the security group will be created."
   type        = string
   default     = "vpc-0b4fd04d01c1b83fa"
 }
-outputs.tf
-hcl
-Copy
-Edit
+```
+- outputs.tf
+```bash
 output "sg_name" {
   value = aws_security_group.sg.tags_all["Name"]
 }
-With Dynamic Blocks
-This version uses a variable list of ingress rules and a dynamic block inside the resource. It allows easy scaling and reuse of the security group with different ingress rules.
+```
+# With Dynamic Blocks
+- This version uses a variable list of ingress rules and a dynamic block inside the resource. It allows easy scaling and reuse of the security group with different ingress rules.
 
-main.tf
-hcl
-Copy
-Edit
+```bash
 resource "aws_security_group" "sg" {
   name        = var.tags["Name"]
   description = "Example security group"
@@ -84,10 +81,10 @@ resource "aws_security_group" "sg" {
 
   tags = var.tags
 }
-variables.tf
-hcl
-Copy
-Edit
+```
+- variables.tf
+
+```bash
 variable "vpcid" {
   description = "VPC ID"
   type        = string
@@ -115,10 +112,11 @@ variable "tags" {
     Environment = "development"
   }
 }
-outputs.tf
-hcl
-Copy
-Edit
+```
+- outputs.tf
+
+```bash
 output "sg_name" {
   value = aws_security_group.sg.tags_all["Name"]
 }
+```
