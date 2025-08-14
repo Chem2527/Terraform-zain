@@ -2,7 +2,7 @@
 
 ## Use Case: Why Use Dynamic Blocks?
 
-In the static approach, each ingress rule must be manually defined, which is fine for few rules but not scalable. Dynamic blocks let you define a list of rules as variables and generate ingress blocks automatically, useful for many similar rules or reusable modules.
+- In Terraform, some resources have nested blocks inside them.  example, an AWS security group has multiple ingress,outgress blocks inside it.we can use dynamic blocks,  take that list of similar data and automatically create one nested block for each item in the list
 
 ---
 
