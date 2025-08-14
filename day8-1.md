@@ -64,32 +64,37 @@ output "sg_name" {
 - This version uses a variable list of ingress rules and a dynamic block inside the resource. It allows easy scaling and reuse of the security group with different ingress rules.
 - **content block** defines what fields and values to include inside each generated block
 
+- main.tf
+
 ```bash
 resource "aws_security_group" "sg" {
-  name        = var.tags["Name"]
-  description = "Example security group"
-  vpc_id      = var.vpcid
+    name        = var.tags["Name"]
+    description = "Example security group"
+    vpc_id      = var.vpcid
 
-  dynamic "ingress" {
-    for_each = var.ingress_rules
-    content {
-      from_port   = ingress.value.from_port
-      to_port     = ingress.value.to_port
-      protocol    = ingress.value.protocol
-      cidr_blocks = ingress.value.cidr_blocks
+    dynamic "ingress" {
+      for_each = var.ingress_rules
+        content {
+            from_port   = ingress.value.from_port
+            to_port     = ingress.value.to_port
+            protocol    = ingress.value.protocol
+            cidr_blocks = ingress.value.cidr_blocks
+        }
     }
-  }
 
-  tags = var.tags
+    tags = var.tags
 }
 ```
-- variables.tf
+- **List**: sequence of values, enclosed in square brackets [...], where each value is of the same data type
+- **object** : is a group of related key-value pairs.
+-**Map**: unordered collection of key-value pairs, enclosed in curly braces {...}
 
+- variables.tf
 ```bash
 variable "vpcid" {
   description = "VPC ID"
   type        = string
-  default     = "vpc-0b4fd04d01c1b83fa"
+  default = "vpc-0b4fd04d01c1b83fa"
 }
 
 variable "ingress_rules" {
